@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Administrador</title>
+    <link rel="stylesheet" href="estilos.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            background: url('./Clinica-video-muestra.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .registro-container {
+            max-width: 500px;
+            margin: 5rem auto;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 10px #05d1fe;
+        }
+
+        h2 {
+            text-align: center;
+            color: #05d1fe;
+        }
+
+        label {
+            display: block;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-top: 0.3rem;
+            border-radius: 8px;
+            border: none;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            width: 100%;
+            margin-top: 1.5rem;
+            padding: 0.7rem;
+            background-color: #05d1fe;
+            border: none;
+            border-radius: 8px;
+            color: black;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .mensaje-error {
+            color: #ff4b4b;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .admin-link {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .admin-link a {
+            color: #05d1fe;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="registro-container">
+        <h2>Administrador</h2>
+        <form id="form-login">
+            <label for="usuario">Usuario</label>
+            <input type="text" id="usuario" name="usuario" required />
+
+            <label for="clave">Contraseña</label>
+            <input type="password" id="clave" name="clave" required />
+
+            <button class="btn" type="submit">Ingresar</button>
+            <p id="error" class="mensaje-error">Usuario o contraseña incorrectos</p>
+        </form>
+
+        <div class="admin-link">
+            <p>¿Eres usuario? <a href="inicio.html">Haz clic aquí</a></p>
+        </div>
+    </div>
+
+    <script>
+        const formulario = document.getElementById("form-login");
+        const errorMensaje = document.getElementById("error");
+
+        const credenciales = {
+            usuario: "pamela01",
+            clave: "admin123"
+        };
+
+        formulario.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const usuarioIngresado = document.getElementById("usuario").value;
+            const claveIngresada = document.getElementById("clave").value;
+
+            if (usuarioIngresado === credenciales.usuario && claveIngresada === credenciales.clave) {
+                window.location.href = "descargar_datos.html";
+            } else {
+                errorMensaje.style.display = "block";
+            }
+        });
+    </script>
+
+</body>
+
+</html>
